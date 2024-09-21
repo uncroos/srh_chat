@@ -18,6 +18,7 @@ header {
   width: 100%;
   padding: 15px 0;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
 }
 
 /* 챗봇 박스 스타일 */
@@ -31,36 +32,40 @@ header {
   background: white;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
 }
 
 /* 챗 로그 스타일 */
-#chat-log {
+#chatbox {
   flex: 1;
   padding: 20px;
   overflow-y: auto;
-  border-bottom: 1px solid #ddd;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  scroll-behavior: smooth;
 }
 
-/* 사용자와 챗봇 메시지 스타일 */
+/* 메시지 박스 스타일 */
 .message {
-  max-width: 80%;
+  max-width: 80%; /* 메시지 폭 제한 */
   padding: 10px 15px;
-  border-radius: 20px;
+  border-radius: 10px;
   word-wrap: break-word;
-  position: relative;
-  display: inline-block;
   font-size: 14px;
+  margin-bottom: 10px;
+  line-height: 1.4;
 }
 
 /* 사용자 메시지 스타일 */
 .user {
+  align-self: flex-end;
   background-color: #007bff;
   color: white;
-  align-self: flex-end;
   border-bottom-right-radius: 0;
+  width: auto;
+  margin-right: 10px;
 }
 
 /* 챗봇 메시지 스타일 */
@@ -69,40 +74,20 @@ header {
   color: black;
   align-self: flex-start;
   border-bottom-left-radius: 0;
-}
-
-/* 삼각형 모양의 화살표 스타일 */
-.message.user::after,
-.message.bot::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  width: 0;
-  height: 0;
-  border-style: solid;
-}
-
-/* 사용자 메시지의 화살표 */
-.message.user::after {
-  border-width: 8px 0 8px 8px;
-  border-color: transparent transparent transparent #007bff;
-  right: -8px;
-  transform: translateY(-50%);
-}
-
-/* 챗봇 메시지의 화살표 */
-.message.bot::after {
-  border-width: 8px 8px 8px 0;
-  border-color: transparent #e5e5ea transparent transparent;
-  left: -8px;
-  transform: translateY(-50%);
+  width: auto;
+  margin-left: 10px;
 }
 
 /* 채팅 입력 스타일 */
 .chat-input {
   display: flex;
-  border-top: 1px solid #ddd;
   padding: 10px;
+  background: #f8f8f8;
+  border-top: 1px solid #ddd;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* 입력창 스타일 */
@@ -116,7 +101,7 @@ header {
 }
 
 /* 전송 버튼 스타일 */
-#send-btn {
+#send-button {
   background-color: #1e90ff;
   color: white;
   border: none;
@@ -127,7 +112,7 @@ header {
 }
 
 /* 버튼 호버 효과 */
-#send-btn:hover {
+#send-button:hover {
   background-color: #007bff;
 }
 
@@ -138,4 +123,5 @@ footer {
   background-color: #1e90ff;
   color: white;
   width: 100%;
+  flex-shrink: 0;
 }
