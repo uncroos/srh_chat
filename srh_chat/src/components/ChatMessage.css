@@ -2,6 +2,7 @@
 .chat-message {
   display: flex;
   margin-bottom: 10px;
+  white-space: pre-wrap; /* 줄바꿈을 유지하도록 설정 */
 }
 
 .chat-message.user {
@@ -13,10 +14,12 @@
 }
 
 .message-bubble {
-  max-width: 60%;
+  max-width: 70%; /* 가로 길이를 약간 줄여 더 균형감 있게 설정 */
   padding: 10px;
   border-radius: 10px;
   background-color: #e1ffc7;
+  line-height: 1.5; /* 줄 간격을 조금 더 넓게 설정 */
+  word-break: break-word; /* 단어가 길 경우 자동 줄바꿈 */
 }
 
 .chat-message.user .message-bubble {

@@ -63,18 +63,19 @@ const Chatbot = () => {
     ]);
   };
 
+  // src/components/Chatbot.js
   const generateResponse = (message) => {
     if (message.includes("학과") || message.includes("정원")) {
       return admissionInfo.departments
         .map(
           (dept) =>
-            `${dept.name}: 총 ${dept.totalSeats}명 (특별전형 ${dept.specialSeats}명, 일반전형 ${dept.generalSeats}명)`
+            `${dept.name}: 총 ${dept.totalSeats}명\n(특별전형 ${dept.specialSeats}명, 일반전형 ${dept.generalSeats}명)`
         )
-        .join("\n");
+        .join("\n\n"); // 각 학과 정보를 줄바꿈으로 구분
     } else if (message.includes("지원 자격") || message.includes("자격")) {
-      return `일반 전형: ${admissionInfo.eligibility.general}\n특별 전형:\n- 마이스터 인재 전형: ${admissionInfo.eligibility.special.maestroTalent}\n- 사회 통합 전형: ${admissionInfo.eligibility.special.socialIntegration}`;
+      return `일반 전형:\n${admissionInfo.eligibility.general}\n\n특별 전형:\n- 마이스터 인재 전형: ${admissionInfo.eligibility.special.maestroTalent}\n- 사회 통합 전형: ${admissionInfo.eligibility.special.socialIntegration}`;
     } else if (message.includes("전형")) {
-      return `1차 전형: ${admissionInfo.application.firstRound}\n2차 전형: ${admissionInfo.application.secondRound}`;
+      return `1차 전형:\n${admissionInfo.application.firstRound}\n\n2차 전형:\n${admissionInfo.application.secondRound}`;
     } else {
       return "문의하신 내용에 대한 정보가 없습니다. 다시 질문해 주세요.";
     }

@@ -4,7 +4,7 @@
   flex-direction: column;
   justify-content: space-between;
   height: 80vh;
-  width: 400px;
+  width: 600px; /* 가로 너비를 넓게 설정 */
   margin: 20px auto;
   border: 1px solid #ccc;
   border-radius: 10px;
